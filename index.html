@@ -27,17 +27,17 @@
                         sans: ['"Hanken Grotesk"', 'sans-serif'],
                     },
                     colors: {
-                        'primary': '#0d2c54',      // Deep Navy Blue from original
-                        'primary-light': '#1E3E62',// Medium Slate Navy
-                        'primary-dark': '#07162C', // Very Dark Navy (footer)
-                        'secondary': '#F97316',    // Safety Orange
-                        'accent': '#EA580C',       // Darker Safety Orange
-                        'brand-yellow': '#FFC229',  // Corporate Yellow (for logo & active nav states)
-                        'brand-yellow-hover': '#FFCF31', // Bright Yellow (for navbar contact button hover)
-                        'brand-red': '#FF383C',     // Corporate Red (for Hero text)
-                        'surface': '#F8FAFC',      // Slate 50
-                        'surface-card': '#FFFFFF', // Card White
-                        'on-surface': '#1a1c1e',   // On-surface Slate from original
+                        'primary': '#0d2c54',
+                        'primary-light': '#1E3E62',
+                        'primary-dark': '#07162C',
+                        'secondary': '#F97316',
+                        'accent': '#EA580C',
+                        'brand-yellow': '#FFC229',
+                        'brand-yellow-hover': '#FFCF31',
+                        'brand-red': '#FF383C',
+                        'surface': '#F8FAFC',
+                        'surface-card': '#FFFFFF',
+                        'on-surface': '#1a1c1e',
                     },
                     borderRadius: {
                         'md': '0.375rem',
@@ -120,6 +120,54 @@
         .partners-track:hover {
             animation-play-state: paused;
         }
+
+        /* Products: See Catalog button */
+        .catalog-btn {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 218px;
+            padding: 0.7rem 1.25rem;
+            border: 1px solid #fff;
+            color: #fff;
+            font-size: 0.875rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            transition: background-color .25s ease, color .25s ease, border-color .25s ease;
+        }
+
+        .catalog-btn:hover,
+        .catalog-btn:focus-visible {
+            background-color: #FFC229;
+            border-color: #FFC229;
+            color: #0d2c54;
+            outline: none;
+        }
+
+        .catalog-btn svg {
+            transition: transform .25s ease;
+        }
+
+        .catalog-btn:hover svg {
+            transform: translateX(4px);
+        }
+
+        /* Services: photo strip auto-scroll */
+        .usp-scroll {
+            animation: partners-scroll 40s linear infinite;
+        }
+
+        .usp-scroll:hover {
+            animation-play-state: paused;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .usp-scroll {
+                animation: none;
+            }
+        }
     </style>
 </head>
 
@@ -132,7 +180,6 @@
 
             <!-- Logo and Brand Area -->
             <a href="#home" class="flex items-center gap-1 group focus:outline-none">
-                <!-- Corporate Logo Mark -->
                 <img src="assets/images/Logo-cp.png" alt="PT Intie Tehnik"
                     class="h-12 w-10 object-contain transition-transform duration-300 group-hover:scale-105">
                 <div class="flex flex-col justify-center">
@@ -173,7 +220,6 @@
 
             <!-- Right Side Controls (Language & CTA) -->
             <div class="hidden md:flex items-center ml-[40px] gap-6">
-                <!-- Language Switcher -->
                 <div class="text-sm font-bold flex items-center gap-2">
                     <button id="lang-en" onclick="setLanguage('en')"
                         class="transition-colors focus:outline-none text-brand-yellow">EN</button>
@@ -182,7 +228,6 @@
                         class="transition-colors focus:outline-none text-primary hover:text-brand-yellow">ID</button>
                 </div>
 
-                <!-- Contact CTA -->
                 <a class="border border-primary text-primary px-4 py-1 text-sm font-semibold transition-all duration-300 hover:bg-brand-yellow-hover hover:border-brand-yellow-hover hover:text-primary focus:outline-none"
                     href="#contact">
                     <span data-translate-en="Contact Us" data-translate-id="Hubungi Kami">Contact Us</span>
@@ -191,7 +236,6 @@
 
             <!-- Mobile Hamburger Button -->
             <div class="flex items-center gap-4 md:hidden">
-                <!-- Mobile Language Selector -->
                 <div class="text-sm font-bold flex items-center gap-2">
                     <button id="lang-en-mob" onclick="setLanguage('en')"
                         class="focus:outline-none text-brand-yellow">EN</button>
@@ -237,7 +281,6 @@
     <!-- BEGIN: HeroSection -->
     <main id="home"
         class="relative flex-grow min-h-[85vh] lg:min-h-[90vh] flex items-center bg-primary overflow-hidden">
-        <!-- Background Carousel: auto-slides, pauses on hover -->
         <div id="hero-carousel" class="absolute inset-0 w-full h-full">
             <img alt="Industrial Pumping Facility 1"
                 class="hero-slide absolute inset-0 w-full h-full object-cover object-center opacity-100"
@@ -250,23 +293,18 @@
                 src="assets/images/hero-bg-3.png" loading="lazy">
         </div>
 
-        <!-- Rich Overlay Gradient -->
         <div class="absolute inset-0 bg-overlay-industrial"></div>
 
-        <!-- Slide Indicator Dots -->
         <div id="hero-dots" class="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex gap-2"></div>
 
-        <!-- Content Container -->
         <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32 w-full z-10">
             <div class="max-w-3xl text-white">
-                <!-- Main Headline -->
                 <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 tracking-tight drop-shadow-md text-white"
                     data-translate-en='PRECISION <span class="text-brand-red">INDUSTRIAL<br>PUMPING</span> AND FLUID<br>HANDLING SOLUTIONS'
                     data-translate-id='SOLUSI <span class="text-brand-red">POMPA INDUSTRI<br>PRESISI</span> DAN PENANGANAN<br>CAIRAN'>
                     PRECISION <span class="text-brand-red">INDUSTRIAL<br>PUMPING</span> AND FLUID<br>HANDLING SOLUTIONS
                 </h1>
 
-                <!-- Sub-headline -->
                 <p class="text-lg md:text-xl text-gray-200 mb-10 max-w-xl font-medium drop-shadow-sm leading-relaxed"
                     data-translate-en="From heavy-duty vertical turbine pumps to casings and rotors, we deliver complete fluid handling systems designed for zero downtime."
                     data-translate-id="Dari pompa turbin vertikal kelas berat hingga casing dan rotor, kami menyediakan sistem penanganan cairan lengkap yang dirancang untuk zero downtime.">
@@ -275,7 +313,6 @@
                     designed for zero downtime.
                 </p>
 
-                <!-- Call to Action Buttons -->
                 <div class="flex flex-col sm:flex-row gap-4">
                     <a class="border-2 border-brand-yellow text-brand-yellow font-semibold px-8 py-3 bg-transparent hover:bg-brand-yellow hover:text-white transition-colors duration-300 text-center shadow-lg uppercase tracking-wider text-sm"
                         href="#products" data-translate-en="Explore Catalog" data-translate-id="Jelajahi Katalog">
@@ -295,10 +332,8 @@
     <section class="py-14 lg:py-20 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-            <!-- Top Row: Big Stat + Heading -->
             <div class="flex flex-col lg:flex-row items-start gap-8 lg:gap-16 mb-14">
 
-                <!-- Big Stat -->
                 <div class="flex-shrink-0 w-full lg:w-[180px] leading-none">
                     <div class="text-brand-red font-extrabold">
                         <span class="text-7xl lg:text-[88px] tracking-[-0.05em]">25</span>
@@ -311,7 +346,6 @@
                     </span>
                 </div>
 
-                <!-- Heading & Description -->
                 <div class="flex-1 max-w-5xl">
                     <h2 class="text-3xl sm:text-4xl lg:text-[46px] leading-[1.08] font-extrabold text-primary tracking-tight mb-4"
                         data-translate-en="Supporting more than 20 critical industries"
@@ -332,7 +366,6 @@
 
             </div>
 
-            <!-- Brand Partners Label -->
             <div class="text-center mb-10">
                 <span class="text-sm lg:text-[16px] font-extrabold text-brand-red uppercase tracking-widest"
                     data-translate-en="Our Brand Partners" data-translate-id="Mitra Merek Kami">
@@ -433,681 +466,384 @@
     <!-- END: Industries & Brand Partners Section -->
 
     <!-- BEGIN: Products & Catalog Section -->
-    <section id="products" class="py-20 lg:py-28 bg-surface">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!--
+        - Background : ganti URL pada style="background-image:url(...)" di div "products-bg"
+        - Gambar card: ganti src pada tiap <img> (rasio ideal ± 6:7, mis. 860x1000 px)
+        - Link katalog: ganti href="#" pada tiap tombol SEE CATALOG (mis. ke file PDF katalog)
+    -->
+    <section id="products" class="relative py-20 lg:py-28 overflow-hidden bg-[#1c4f82]">
 
-            <!-- Section Title -->
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <h2 class="text-xs font-extrabold text-secondary uppercase tracking-widest mb-3"
-                    data-translate-en="Precision Machinery" data-translate-id="Mesin Presisi">Precision Machinery</h2>
-                <h3 class="text-3xl sm:text-4xl font-extrabold text-primary tracking-tight mb-4"
-                    data-translate-en="Core Fluid Engineering Solutions"
-                    data-translate-id="Solusi Utama Rekayasa Cairan">Core
-                    Fluid Engineering Solutions</h3>
-                <div class="w-16 h-1 bg-secondary mx-auto mb-4"></div>
-                <p class="text-slate-600 text-sm sm:text-base"
-                    data-translate-en="We manufacture, assemble, and support heavy-duty pumping equipment built to handle high pressures, corrosive fluids, and extreme flow demands."
-                    data-translate-id="Kami memproduksi, merakit, dan mendukung peralatan pemompaan kelas berat yang dibuat untuk menangani tekanan tinggi, cairan korosif, dan tuntutan aliran ekstrim.">
-                    We manufacture, assemble, and support heavy-duty pumping equipment built to handle high pressures,
-                    corrosive
-                    fluids, and extreme flow demands.
-                </p>
-            </div>
+        <!-- Background sementara (ganti URL-nya nanti) -->
+        <div id="products-bg" class="absolute inset-0 bg-cover bg-center"
+            style="background-image:url('https://picsum.photos/seed/pump-bg/1600/1200')"></div>
+        <!-- Overlay biru supaya teks tetap terbaca -->
+        <div class="absolute inset-0 bg-gradient-to-b from-[#2a609a]/90 via-[#1d5088]/92 to-[#0f3660]/95"></div>
 
-            <!-- Products Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 
-                <!-- Product 1 -->
-                <div
-                    class="bg-white rounded-lg shadow-premium border border-slate-100 overflow-hidden flex flex-col group hover:shadow-premium-hover transition-all duration-300 hover:-translate-y-1">
-                    <div class="h-48 bg-slate-50 flex items-center justify-center p-8 relative overflow-hidden">
-                        <!-- Simulated background decoration -->
-                        <div class="absolute inset-0 bg-gradient-to-tr from-slate-100/50 to-white pointer-events-none">
-                        </div>
-                        <!-- Technical Pump Icon -->
-                        <svg class="h-20 w-20 text-primary group-hover:text-secondary transition-colors duration-300"
-                            fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+            <h2 class="text-center text-white font-extrabold uppercase tracking-tight leading-tight text-2xl sm:text-3xl lg:text-4xl mb-14 lg:mb-20"
+                data-translate-en='ENGINEERED PUMPING SYSTEMS<br>FOR EVERY INDUSTRY, EVERY CHALLENGE'
+                data-translate-id='SISTEM POMPA REKAYASA<br>UNTUK SETIAP INDUSTRI, SETIAP TANTANGAN'>
+                ENGINEERED PUMPING SYSTEMS<br>FOR EVERY INDUSTRY, EVERY CHALLENGE
+            </h2>
+
+            <div
+                class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-10 lg:gap-x-24 gap-y-14 max-w-md sm:max-w-none mx-auto">
+
+                <!-- Produk 1 -->
+                <article class="flex flex-col">
+                    <img src="assets/images/product/Rectangle8.png" alt="Centrifugal Pumps Industries"
+                        class="w-full aspect-[6/7] object-cover" loading="lazy">
+                    <h3 class="mt-6 text-white text-2xl font-bold leading-tight"
+                        data-translate-en="Centrifugal Pumps Industries" data-translate-id="Pompa Sentrifugal Industri">
+                        Centrifugal Pumps Industries</h3>
+                    <p class="mt-4 font-serif text-white/90 text-base leading-snug flex-grow"
+                        data-translate-en="Utility, Process, End Suction, Split Case, Multistage, Vertical Turbine, &amp; Submersible Pumps"
+                        data-translate-id="Pompa Utilitas, Proses, End Suction, Split Case, Multistage, Turbin Vertikal, &amp; Submersible">
+                        Utility, Process, End Suction, Split Case, Multistage, Vertical Turbine, &amp; Submersible Pumps
+                    </p>
+                    <a href="#" class="catalog-btn mt-6">
+                        <span data-translate-en="See Catalog" data-translate-id="Lihat Katalog">See Catalog</span>
+                        <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6l6 6-6 6" />
                         </svg>
-                    </div>
-                    <div class="p-6 flex-grow flex flex-col">
-                        <h4 class="text-lg font-bold text-primary mb-2 group-hover:text-secondary transition-colors duration-200"
-                            data-translate-en="Vertical Turbine Pumps" data-translate-id="Pompa Turbin Vertikal">
-                            Vertical Turbine
-                            Pumps</h4>
-                        <p class="text-slate-500 text-xs leading-relaxed flex-grow"
-                            data-translate-en="Engineered for deep-well fluid extraction, municipal water, and high-flow agricultural irrigation, featuring customized shaft lengths and impellers."
-                            data-translate-id="Dirancang untuk ekstraksi cairan sumur dalam, air kota, dan irigasi pertanian aliran tinggi, menampilkan panjang poros dan impeller khusus.">
-                            Engineered for deep-well fluid extraction, municipal water, and high-flow agricultural
-                            irrigation,
-                            featuring customized shaft lengths and impellers.
-                        </p>
-                        <div class="mt-6 pt-4 border-t border-slate-50">
-                            <button onclick="preSelectProduct('Vertical Turbine Pumps')"
-                                class="text-secondary font-bold text-xs flex items-center gap-1.5 hover:text-accent focus:outline-none">
-                                <span data-translate-en="Request Specifications"
-                                    data-translate-id="Minta Spesifikasi">Request
-                                    Specifications</span>
-                                <svg class="h-3.5 w-3.5 transform group-hover:translate-x-1 transition-transform"
-                                    fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                </div>
+                    </a>
+                </article>
 
-                <!-- Product 2 -->
-                <div
-                    class="bg-white rounded-lg shadow-premium border border-slate-100 overflow-hidden flex flex-col group hover:shadow-premium-hover transition-all duration-300 hover:-translate-y-1">
-                    <div class="h-48 bg-slate-50 flex items-center justify-center p-8 relative overflow-hidden">
-                        <div class="absolute inset-0 bg-gradient-to-tr from-slate-100/50 to-white pointer-events-none">
-                        </div>
-                        <!-- Technical Gear/Process Icon -->
-                        <svg class="h-20 w-20 text-primary group-hover:text-secondary transition-colors duration-300"
-                            fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                <!-- Produk 2 -->
+                <article class="flex flex-col">
+                    <img src="assets/images/product/Rectangle9.png" alt="Positive Displacement Pump"
+                        class="w-full aspect-[6/7] object-cover" loading="lazy">
+                    <h3 class="mt-6 text-white text-2xl font-bold leading-tight"
+                        data-translate-en="Positive Displacement Pump" data-translate-id="Pompa Perpindahan Positif">
+                        Positive Displacement Pump</h3>
+                    <p class="mt-4 font-serif text-white/90 text-base leading-snug flex-grow"
+                        data-translate-en="Internal Gear, Lobe, Rotary Gear, &amp; Twin/Three Screw Pumps"
+                        data-translate-id="Pompa Internal Gear, Lobe, Rotary Gear, &amp; Twin/Three Screw">
+                        Internal Gear, Lobe, Rotary Gear, &amp; Twin/Three Screw Pumps
+                    </p>
+                    <a href="#" class="catalog-btn mt-6">
+                        <span data-translate-en="See Catalog" data-translate-id="Lihat Katalog">See Catalog</span>
+                        <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6l6 6-6 6" />
                         </svg>
-                    </div>
-                    <div class="p-6 flex-grow flex flex-col">
-                        <h4 class="text-lg font-bold text-primary mb-2 group-hover:text-secondary transition-colors duration-200"
-                            data-translate-en="Heavy-Duty Process Pumps" data-translate-id="Pompa Proses Berat">
-                            Heavy-Duty Process
-                            Pumps</h4>
-                        <p class="text-slate-500 text-xs leading-relaxed flex-grow"
-                            data-translate-en="Designed for volatile petrochemicals, boiler feed water, and refining plants. Built strictly to API 610 standards for high reliability."
-                            data-translate-id="Dirancang untuk petrokimia yang mudah menguap, air umpan boiler, dan kilang. Dibangun ketat sesuai standar API 610 untuk keandalan tinggi.">
-                            Designed for volatile petrochemicals, boiler feed water, and refining plants. Built strictly
-                            to API 610
-                            standards for high reliability.
-                        </p>
-                        <div class="mt-6 pt-4 border-t border-slate-50">
-                            <button onclick="preSelectProduct('Heavy-Duty Process Pumps')"
-                                class="text-secondary font-bold text-xs flex items-center gap-1.5 hover:text-accent focus:outline-none">
-                                <span data-translate-en="Request Specifications"
-                                    data-translate-id="Minta Spesifikasi">Request
-                                    Specifications</span>
-                                <svg class="h-3.5 w-3.5 transform group-hover:translate-x-1 transition-transform"
-                                    fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                </div>
+                    </a>
+                </article>
 
-                <!-- Product 3 -->
-                <div
-                    class="bg-white rounded-lg shadow-premium border border-slate-100 overflow-hidden flex flex-col group hover:shadow-premium-hover transition-all duration-300 hover:-translate-y-1">
-                    <div class="h-48 bg-slate-50 flex items-center justify-center p-8 relative overflow-hidden">
-                        <div class="absolute inset-0 bg-gradient-to-tr from-slate-100/50 to-white pointer-events-none">
-                        </div>
-                        <!-- Technical Rotor Icon -->
-                        <svg class="h-20 w-20 text-primary group-hover:text-secondary transition-colors duration-300"
-                            fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M4 4v5h.582m15.356 2A8.001 8.001 0 1121.21 7.89M9 11l3 3m0 0l3-3m-3 3V8" />
+                <!-- Produk 3 -->
+                <article class="flex flex-col">
+                    <img src="assets/images/product/Rectangle10.png" alt="Vacuum Pump & Roots Blower"
+                        class="w-full aspect-[6/7] object-cover" loading="lazy">
+                    <h3 class="mt-6 text-white text-2xl font-bold leading-tight"
+                        data-translate-en="Vacuum Pump &amp; Roots Blower"
+                        data-translate-id="Pompa Vakum &amp; Roots Blower">
+                        Vacuum Pump &amp; Roots Blower</h3>
+                    <p class="mt-4 font-serif text-white/90 text-base leading-snug flex-grow"
+                        data-translate-en="Liquid Ring Vacuum Pumps, Compressors, &amp; Trundean Roots Blowers"
+                        data-translate-id="Pompa Vakum Liquid Ring, Kompresor, &amp; Trundean Roots Blower">
+                        Liquid Ring Vacuum Pumps, Compressors, &amp; Trundean Roots Blowers
+                    </p>
+                    <a href="#" class="catalog-btn mt-6">
+                        <span data-translate-en="See Catalog" data-translate-id="Lihat Katalog">See Catalog</span>
+                        <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6l6 6-6 6" />
                         </svg>
-                    </div>
-                    <div class="p-6 flex-grow flex flex-col">
-                        <h4 class="text-lg font-bold text-primary mb-2 group-hover:text-secondary transition-colors duration-200"
-                            data-translate-en="Precision Rotors & Casings" data-translate-id="Casing & Rotor Presisi">
-                            Precision Rotors
-                            & Casings</h4>
-                        <p class="text-slate-500 text-xs leading-relaxed flex-grow"
-                            data-translate-en="High-tolerance CNC milled casings and balanced impellers designed to minimize cavitation, vibration, and energy consumption."
-                            data-translate-id="Casing gilingan CNC dengan toleransi tinggi dan impeller seimbang yang dirancang untuk meminimalkan kavitasi, getaran, dan konsumsi energi.">
-                            High-tolerance CNC milled casings and balanced impellers designed to minimize cavitation,
-                            vibration, and
-                            energy consumption.
-                        </p>
-                        <div class="mt-6 pt-4 border-t border-slate-50">
-                            <button onclick="preSelectProduct('Precision Rotors & Casings')"
-                                class="text-secondary font-bold text-xs flex items-center gap-1.5 hover:text-accent focus:outline-none">
-                                <span data-translate-en="Request Specifications"
-                                    data-translate-id="Minta Spesifikasi">Request
-                                    Specifications</span>
-                                <svg class="h-3.5 w-3.5 transform group-hover:translate-x-1 transition-transform"
-                                    fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                </div>
+                    </a>
+                </article>
 
-                <!-- Product 4 -->
-                <div
-                    class="bg-white rounded-lg shadow-premium border border-slate-100 overflow-hidden flex flex-col group hover:shadow-premium-hover transition-all duration-300 hover:-translate-y-1">
-                    <div class="h-48 bg-slate-50 flex items-center justify-center p-8 relative overflow-hidden">
-                        <div class="absolute inset-0 bg-gradient-to-tr from-slate-100/50 to-white pointer-events-none">
-                        </div>
-                        <!-- Technical Skid Package Icon -->
-                        <svg class="h-20 w-20 text-primary group-hover:text-secondary transition-colors duration-300"
-                            fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+                <!-- Produk 4 -->
+                <article class="flex flex-col">
+                    <img src="assets/images/product/Rectangle11.png" alt="Metering & Dosing Pump"
+                        class="w-full aspect-[6/7] object-cover" loading="lazy">
+                    <h3 class="mt-6 text-white text-2xl font-bold leading-tight"
+                        data-translate-en="Metering &amp; Dosing Pump" data-translate-id="Pompa Metering &amp; Dosing">
+                        Metering &amp; Dosing Pump</h3>
+                    <p class="mt-4 font-serif text-white/90 text-base leading-snug flex-grow"
+                        data-translate-en="API 675 Double Diaphragm, Plunger, &amp; Water Treatment Dosing Pumps"
+                        data-translate-id="Pompa Dosing API 675 Double Diaphragm, Plunger, &amp; Pengolahan Air">
+                        API 675 Double Diaphragm, Plunger, &amp; Water Treatment Dosing Pumps
+                    </p>
+                    <a href="#" class="catalog-btn mt-6">
+                        <span data-translate-en="See Catalog" data-translate-id="Lihat Katalog">See Catalog</span>
+                        <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6l6 6-6 6" />
                         </svg>
-                    </div>
-                    <div class="p-6 flex-grow flex flex-col">
-                        <h4 class="text-lg font-bold text-primary mb-2 group-hover:text-secondary transition-colors duration-200"
-                            data-translate-en="Custom Fluid Handling Skids"
-                            data-translate-id="Skid Penanganan Cairan Kustom">Custom
-                            Fluid Handling Skids</h4>
-                        <p class="text-slate-500 text-xs leading-relaxed flex-grow"
-                            data-translate-en="Turnkey pre-assembled modular skid solutions including filtration, dosing, valving systems, and automated PLC control systems."
-                            data-translate-id="Solusi skid modular pra-rakitan siap pakai termasuk filtrasi, dosis, sistem katup, dan sistem kontrol PLC otomatis.">
-                            Turnkey pre-assembled modular skid solutions including filtration, dosing, valving systems,
-                            and automated
-                            PLC control systems.
-                        </p>
-                        <div class="mt-6 pt-4 border-t border-slate-50">
-                            <button onclick="preSelectProduct('Custom Fluid Handling Skids')"
-                                class="text-secondary font-bold text-xs flex items-center gap-1.5 hover:text-accent focus:outline-none">
-                                <span data-translate-en="Request Specifications"
-                                    data-translate-id="Minta Spesifikasi">Request
-                                    Specifications</span>
-                                <svg class="h-3.5 w-3.5 transform group-hover:translate-x-1 transition-transform"
-                                    fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                </div>
+                    </a>
+                </article>
+
+                <!-- Produk 5 -->
+                <article class="flex flex-col">
+                    <img src="assets/images/product/Rectangle12.png" alt="Specialized Chemical Pump"
+                        class="w-full aspect-[6/7] object-cover" loading="lazy">
+                    <h3 class="mt-6 text-white text-2xl font-bold leading-tight"
+                        data-translate-en="Specialized Chemical Pump" data-translate-id="Pompa Kimia Khusus">
+                        Specialized Chemical Pump</h3>
+                    <p class="mt-4 font-serif text-white/90 text-base leading-snug flex-grow"
+                        data-translate-en="Regenerative Turbine, Solid Handling, &amp; Deepwell Submersible Pumps"
+                        data-translate-id="Pompa Regenerative Turbine, Solid Handling, &amp; Deepwell Submersible">
+                        Regenerative Turbine, Solid Handling, &amp; Deepwell Submersible Pumps
+                    </p>
+                    <a href="#" class="catalog-btn mt-6">
+                        <span data-translate-en="See Catalog" data-translate-id="Lihat Katalog">See Catalog</span>
+                        <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6l6 6-6 6" />
+                        </svg>
+                    </a>
+                </article>
+
+                <!-- Produk 6 -->
+                <article class="flex flex-col">
+                    <img src="assets/images/product/Rectangle13.png" alt="Valves & Instrumentation"
+                        class="w-full aspect-[6/7] object-cover" loading="lazy">
+                    <h3 class="mt-6 text-white text-2xl font-bold leading-tight"
+                        data-translate-en="Valves &amp; Instrumentation" data-translate-id="Katup &amp; Instrumentasi">
+                        Valves &amp; Instrumentation</h3>
+                    <p class="mt-4 font-serif text-white/90 text-base leading-snug flex-grow"
+                        data-translate-en="Control Valves (Globe/Butterfly), Manual Valves, Flowmeters, &amp; Agitators"
+                        data-translate-id="Control Valve (Globe/Butterfly), Katup Manual, Flowmeter, &amp; Agitator">
+                        Control Valves (Globe/Butterfly), Manual Valves, Flowmeters, &amp; Agitators
+                    </p>
+                    <a href="#" class="catalog-btn mt-6">
+                        <span data-translate-en="See Catalog" data-translate-id="Lihat Katalog">See Catalog</span>
+                        <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6l6 6-6 6" />
+                        </svg>
+                    </a>
+                </article>
 
             </div>
         </div>
     </section>
     <!-- END: Products & Catalog Section -->
 
-    <!-- BEGIN: Engineering Services Section -->
-    <section id="services" class="py-20 lg:py-28 bg-primary text-white relative overflow-hidden">
-        <!-- Subtle technical mesh/grid background overlay -->
-        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(30,62,98,0.3),transparent_70%)]"></div>
-
-        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
-
-            <!-- Section Title -->
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <span class="text-xs font-extrabold text-secondary uppercase tracking-widest mb-3 block"
-                    data-translate-en="Certified Field Engineering"
-                    data-translate-id="Rekayasa Lapangan Bersertifikat">Certified
-                    Field Engineering</span>
-                <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mb-4"
-                    data-translate-en="Our Services & Capabilities" data-translate-id="Layanan & Kapabilitas Kami">Our
-                    Services &
-                    Capabilities</h2>
-                <div class="w-16 h-1 bg-secondary mx-auto"></div>
-            </div>
-
-            <!-- Services Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-
-                <!-- Service 1 -->
-                <div
-                    class="bg-primary-light/40 border border-primary-light/80 p-6 rounded-lg backdrop-blur-sm hover:border-secondary transition-all duration-300">
-                    <div class="p-3 bg-secondary/10 rounded-md w-fit mb-4">
-                        <!-- Design Icon -->
-                        <svg class="h-6 w-6 text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                            stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-                        </svg>
-                    </div>
-                    <h3 class="text-lg font-bold mb-2 text-white" data-translate-en="Engineering & CAD Design"
-                        data-translate-id="Rekayasa & Desain CAD">Engineering & CAD Design</h3>
-                    <p class="text-slate-300 text-xs leading-relaxed"
-                        data-translate-en="Advanced 3D modeling, fluid dynamics simulations (CFD), and pump selection analysis tailored to your pipeline geometry and viscosity."
-                        data-translate-id="Pemodelan 3D canggih, simulasi dinamika cairan (CFD), dan analisis pemilihan pompa yang disesuaikan dengan geometri pipa dan viskositas Anda.">
-                        Advanced 3D modeling, fluid dynamics simulations (CFD), and pump selection analysis tailored to
-                        your
-                        pipeline geometry and viscosity.
-                    </p>
-                </div>
-
-                <!-- Service 2 -->
-                <div
-                    class="bg-primary-light/40 border border-primary-light/80 p-6 rounded-lg backdrop-blur-sm hover:border-secondary transition-all duration-300">
-                    <div class="p-3 bg-secondary/10 rounded-md w-fit mb-4">
-                        <!-- Installation Icon -->
-                        <svg class="h-6 w-6 text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                            stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                        </svg>
-                    </div>
-                    <h3 class="text-lg font-bold mb-2 text-white" data-translate-en="Installation & Commissioning"
-                        data-translate-id="Instalasi & Uji Coba">Installation & Commissioning</h3>
-                    <p class="text-slate-300 text-xs leading-relaxed"
-                        data-translate-en="Precision leveling, laser alignment, dynamic balancing, and dry-run protection setups performed on-site by certified engineering crews."
-                        data-translate-id="Perataan presisi, penyelarasan laser, penyeimbangan dinamis, dan pengaturan perlindungan dry-run dilakukan di lokasi oleh kru insinyur bersertifikat.">
-                        Precision leveling, laser alignment, dynamic balancing, and dry-run protection setups performed
-                        on-site by
-                        certified engineering crews.
-                    </p>
-                </div>
-
-                <!-- Service 3 -->
-                <div
-                    class="bg-primary-light/40 border border-primary-light/80 p-6 rounded-lg backdrop-blur-sm hover:border-secondary transition-all duration-300">
-                    <div class="p-3 bg-secondary/10 rounded-md w-fit mb-4">
-                        <!-- Maintenance Icon -->
-                        <svg class="h-6 w-6 text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                            stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-                        </svg>
-                    </div>
-                    <h3 class="text-lg font-bold mb-2 text-white" data-translate-en="Preventive Maintenance"
-                        data-translate-id="Pemeliharaan Preventif">Preventive Maintenance</h3>
-                    <p class="text-slate-300 text-xs leading-relaxed"
-                        data-translate-en="Periodic vibration audits, mechanical seal replacements, impeller wear inspections, and bearing lube analysis schedules."
-                        data-translate-id="Audit getaran berkala, penggantian seal mekanis, inspeksi aus impeller, dan jadwal analisis pelumas bantalan.">
-                        Periodic vibration audits, mechanical seal replacements, impeller wear inspections, and bearing
-                        lube
-                        analysis schedules.
-                    </p>
-                </div>
-
-                <!-- Service 4 -->
-                <div
-                    class="bg-primary-light/40 border border-primary-light/80 p-6 rounded-lg backdrop-blur-sm hover:border-secondary transition-all duration-300">
-                    <div class="p-3 bg-secondary/10 rounded-md w-fit mb-4">
-                        <!-- Support Icon -->
-                        <svg class="h-6 w-6 text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                            stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                    </div>
-                    <h3 class="text-lg font-bold mb-2 text-white" data-translate-en="24/7 Field Maintenance"
-                        data-translate-id="Layanan Lapangan 24/7">24/7 Field Maintenance</h3>
-                    <p class="text-slate-300 text-xs leading-relaxed"
-                        data-translate-en="Rapid deployment of mobile workshops and diagnostic specialists to troubleshoot pump failures and minimize critical industrial downtime."
-                        data-translate-id="Penyebaran cepat bengkel keliling dan spesialis diagnostik untuk mengatasi kegagalan pompa dan meminimalkan waktu henti industri kritis.">
-                        Rapid deployment of mobile workshops and diagnostic specialists to troubleshoot pump failures
-                        and minimize
-                        critical industrial downtime.
-                    </p>
-                </div>
-
-            </div>
-        </div>
-    </section>
-    <!-- END: Engineering Services Section -->
-
-    <!-- BEGIN: Why Choose Us Section -->
-    <section id="why-choose-us" class="py-20 lg:py-28 bg-white">
+    <!-- BEGIN: Services / Why Partner With Us Section -->
+    <!--
+        - Ilustrasi kiri : ganti src pada <img id="usp-illustration"> (ideal PNG transparan, garis merah)
+        - Foto strip     : ganti src pada 5 foto di SET 1 DAN SET 2 (set 2 = duplikat untuk loop mulus)
+    -->
+    <section id="services" class="py-16 lg:py-24 bg-[#f7f7f7] overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            <h2 class="text-center text-[#e0294a] font-extrabold tracking-tight text-3xl sm:text-4xl lg:text-5xl mb-12 lg:mb-20"
+                data-translate-en="Why Partner with Us?" data-translate-id="Mengapa Bermitra dengan Kami?">
+                Why Partner with Us?
+            </h2>
 
-                <!-- Left Side: Graphic / Showcase Info -->
-                <div class="relative bg-slate-50 p-8 rounded-xl border border-slate-100 shadow-premium overflow-hidden">
-                    <div class="absolute top-0 right-0 w-48 h-48 bg-secondary/5 rounded-full filter blur-xl"></div>
-                    <div class="absolute bottom-0 left-0 w-32 h-32 bg-primary/5 rounded-full filter blur-xl"></div>
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
 
-                    <span class="text-xs font-bold text-secondary uppercase tracking-wider block mb-2"
-                        data-translate-en="Engineering Philosophy" data-translate-id="Filosofi Rekayasa">Engineering
-                        Philosophy</span>
-                    <h3 class="text-2xl sm:text-3xl font-extrabold text-primary mb-6"
-                        data-translate-en="Precision Tolerances for Heavy Industrial Operations"
-                        data-translate-id="Toleransi Presisi untuk Operasi Industri Berat">Precision Tolerances for
-                        Heavy Industrial
-                        Operations</h3>
-
-                    <div class="space-y-6">
-                        <!-- Highlight 1 -->
-                        <div class="flex gap-4">
-                            <div
-                                class="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded bg-primary text-secondary">
-                                <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                                    stroke-width="2.5">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0" />
-                                </svg>
-                            </div>
-                            <div>
-                                <h4 class="text-sm font-bold text-primary mb-1"
-                                    data-translate-en="API 610 & ISO 9001 Compliant"
-                                    data-translate-id="Kepatuhan API 610 & ISO 9001">API 610 & ISO 9001 Compliant</h4>
-                                <p class="text-slate-500 text-xs"
-                                    data-translate-en="All fabrication and re-machining processes strictly adhere to American Petroleum Institute guidelines for refinery operations."
-                                    data-translate-id="Semua proses fabrikasi dan pemesinan ulang mematuhi pedoman American Petroleum Institute untuk operasi kilang.">
-                                </p>
-                            </div>
-                        </div>
-
-                        <!-- Highlight 2 -->
-                        <div class="flex gap-4">
-                            <div
-                                class="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded bg-primary text-secondary">
-                                <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                                    stroke-width="2.5">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="M13 10V3L4 14h7v7l9-11h-7z" />
-                                </svg>
-                            </div>
-                            <div>
-                                <h4 class="text-sm font-bold text-primary mb-1"
-                                    data-translate-en="Zero Cavitation Guarantee"
-                                    data-translate-id="Jaminan Bebas Kavitasi">Zero Cavitation Guarantee</h4>
-                                <p class="text-slate-500 text-xs"
-                                    data-translate-en="We optimize impeller designs through custom hydraulic modeling to eliminate vacuum pockets, protecting machinery from wear."
-                                    data-translate-id="Kami mengoptimalkan desain impeller melalui pemodelan hidrolik khusus untuk menghilangkan kantong vakum, melindungi mesin dari keausan.">
-                                </p>
-                            </div>
-                        </div>
-
-                        <!-- Highlight 3 -->
-                        <div class="flex gap-4">
-                            <div
-                                class="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded bg-primary text-secondary">
-                                <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                                    stroke-width="2.5">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                                </svg>
-                            </div>
-                            <div>
-                                <h4 class="text-sm font-bold text-primary mb-1"
-                                    data-translate-en="Domestic Parts Availability"
-                                    data-translate-id="Ketersediaan Suku Cadang Domestik">Domestic Parts Availability
-                                </h4>
-                                <p class="text-slate-500 text-xs"
-                                    data-translate-en="Our local manufacturing workshop in Cikarang ensures swift production and delivery of replacement shafts, rotors, and casings."
-                                    data-translate-id="Bengkel manufaktur lokal kami di Cikarang memastikan produksi dan pengiriman cepat untuk poros, rotor, dan casing pengganti.">
-                                </p>
-                            </div>
-                        </div>
-                    </div>
+                <!-- Ilustrasi -->
+                <div class="lg:col-span-5 flex justify-center">
+                    <img id="usp-illustration" src="assets/images/layanan/whyus.png" alt="Pump technical illustration"
+                        class="w-full max-w-sm lg:max-w-md object-contain" loading="lazy">
                 </div>
 
-                <!-- Right Side: Text & Core Points -->
-                <div>
-                    <span class="text-xs font-extrabold text-secondary uppercase tracking-widest mb-3 block"
-                        data-translate-en="Why PT Intie Tehnik" data-translate-id="Mengapa PT Intie Tehnik">Why PT Intie
-                        Tehnik</span>
-                    <h2 class="text-3xl sm:text-4xl font-extrabold text-primary tracking-tight mb-6"
-                        data-translate-en="Engineered to Outlast Extreme Conditions"
-                        data-translate-id="Direkayasa untuk Bertahan di Kondisi Ekstrem">Engineered to Outlast Extreme
-                        Conditions
-                    </h2>
-                    <div class="w-12 h-1 bg-secondary mb-6"></div>
-                    <p class="text-slate-600 text-sm sm:text-base leading-relaxed mb-8"
-                        data-translate-en="Industrial fluid systems cannot afford failures. Every hour of downtime leads to critical revenue loss. Our engineering team brings over 15 years of specialty pump remanufacturing, customizing hydraulics to withstand corrosion, temperature fluctuations, and particulate-heavy slurry."
-                        data-translate-id="Sistem cairan industri tidak boleh mengalami kegagalan. Setiap jam downtime menyebabkan kerugian pendapatan kritis. Tim rekayasa kami membawa lebih dari 15 tahun keahlian pembuatan ulang pompa khusus, menyesuaikan hidrolik untuk menahan korosi, fluktuasi suhu, dan lumpur padat partikulat.">
-                        Industrial fluid systems cannot afford failures. Every hour of downtime leads to critical
-                        revenue loss. Our
-                        engineering team brings over 15 years of specialty pump remanufacturing, customizing hydraulics
-                        to withstand
-                        corrosion, temperature fluctuations, and particulate-heavy slurry.
+                <!-- Teks -->
+                <div class="lg:col-span-7 font-serif text-[#e0294a] text-base leading-relaxed space-y-6">
+                    <p class="[text-indent:1.5rem]"
+                        data-translate-en="Our technical catalog is built to perform in environments where standard equipment fails. Whether your operations demand extreme high-volume circulation up to 55,000 m³/hr, high-pressure head delivery reaching 850 meters, or severe thermal management spanning -50°C to 350°C, our pumping systems are engineered to withstand the harshest pressures and continuous duty cycles."
+                        data-translate-id="Katalog teknis kami dibuat untuk bekerja di lingkungan yang membuat peralatan standar gagal. Baik operasi Anda membutuhkan sirkulasi volume sangat besar hingga 55.000 m³/jam, head bertekanan tinggi hingga 850 meter, maupun manajemen suhu ekstrem dari -50°C hingga 350°C, sistem pompa kami dirancang untuk menahan tekanan terberat dan siklus kerja kontinu.">
+                        Our technical catalog is built to perform in environments where standard equipment fails.
+                        Whether your operations demand extreme high-volume circulation up to 55,000 m³/hr, high-pressure
+                        head delivery reaching 850 meters, or severe thermal management spanning -50°C to 350°C, our
+                        pumping systems are engineered to withstand the harshest pressures and continuous duty cycles.
                     </p>
-
-                    <!-- Core Pillars -->
-                    <div class="grid grid-cols-2 gap-6">
-                        <div class="border-l-4 border-secondary pl-4">
-                            <h5 class="text-base font-bold text-primary mb-1" data-translate-en="100% Reliable"
-                                data-translate-id="100% Andal">100% Reliable</h5>
-                            <p class="text-slate-500 text-xs"
-                                data-translate-en="All systems undergo strict hydrotesting and alignment reviews prior to deployment."
-                                data-translate-id="Semua sistem menjalani pengujian hidrolik ketat dan tinjauan penyelarasan sebelum dipasang.">
-                            </p>
-                        </div>
-
-                        <div class="border-l-4 border-secondary pl-4">
-                            <h5 class="text-base font-bold text-primary mb-1" data-translate-en="Tailored Specs"
-                                data-translate-id="Spesifikasi Kustom">Tailored Specs</h5>
-                            <p class="text-slate-500 text-xs"
-                                data-translate-en="We customize metallurgy (e.g. Duplex Steel, Bronze) to suit the fluid's chemical composition."
-                                data-translate-id="Kami menyesuaikan metalurgi (misalnya Duplex Steel, Perunggu) agar sesuai dengan komposisi kimia cairan.">
-                            </p>
-                        </div>
-                    </div>
+                    <p class="[text-indent:1.5rem]"
+                        data-translate-en="Industrial processing requires specialized handling for challenging fluids. From non-clogging solid handling units capable of passing 105 mm particles to positive displacement pumps processing high-viscosity media up to 1,000,000 cP, we ensure smooth flow across pulp, sugar, and chemical production lines. Furthermore, our API 675 compliant double-diaphragm and plunger metering pumps guarantee zero-leakage, high-precision chemical dosing for critical water treatment and process automation. We complement our pump offerings with an integrated range of industrial hardware, including control valves, electromagnetic flowmeters, agitators, and digital monitoring systems."
+                        data-translate-id="Pengolahan industri membutuhkan penanganan khusus untuk fluida yang menantang. Dari unit solid handling anti-sumbat yang mampu melewatkan partikel 105 mm hingga pompa perpindahan positif untuk fluida kekentalan tinggi sampai 1.000.000 cP, kami memastikan aliran lancar di lini produksi pulp, gula, dan kimia. Selain itu, pompa metering double-diaphragm dan plunger kami yang sesuai API 675 menjamin dosis kimia presisi tinggi tanpa kebocoran untuk pengolahan air dan otomasi proses yang kritis. Kami melengkapi lini pompa dengan rangkaian perangkat industri terpadu, termasuk control valve, flowmeter elektromagnetik, agitator, dan sistem pemantauan digital.">
+                        Industrial processing requires specialized handling for challenging fluids. From non-clogging
+                        solid handling units capable of passing 105 mm particles to positive displacement pumps
+                        processing high-viscosity media up to 1,000,000 cP, we ensure smooth flow across pulp, sugar,
+                        and chemical production lines. Furthermore, our API 675 compliant double-diaphragm and plunger
+                        metering pumps guarantee zero-leakage, high-precision chemical dosing for critical water
+                        treatment and process automation. We complement our pump offerings with an integrated range of
+                        industrial hardware, including control valves, electromagnetic flowmeters, agitators, and
+                        digital monitoring systems.
+                    </p>
+                    <p class="[text-indent:1.5rem]"
+                        data-translate-en="Based in Surabaya, our technical support team provides direct consultation, dynamic system sizing, and fast response times to keep your operations running seamlessly."
+                        data-translate-id="Berbasis di Surabaya, tim dukungan teknis kami memberikan konsultasi langsung, perhitungan ukuran sistem yang dinamis, dan respons cepat agar operasi Anda tetap berjalan lancar.">
+                        Based in Surabaya, our technical support team provides direct consultation, dynamic system
+                        sizing, and fast response times to keep your operations running seamlessly.
+                    </p>
                 </div>
+            </div>
+        </div>
 
+        <!-- Strip foto auto-scroll (full width, berhenti saat di-hover) -->
+        <div class="mt-16 lg:mt-24 overflow-hidden">
+            <div class="usp-scroll flex gap-4 w-max">
+
+                <!-- ===== SET 1 ===== -->
+                <img src="assets/images/layanan/IMG-1.png" alt="Pump installation 1"
+                    class="h-40 sm:h-48 lg:h-52 w-auto aspect-[8/5] object-cover flex-shrink-0" loading="lazy">
+                <img src="assets/images/layanan/IMG-2.png" alt="Pump installation 2"
+                    class="h-40 sm:h-48 lg:h-52 w-auto aspect-[8/5] object-cover flex-shrink-0" loading="lazy">
+                <img src="assets/images/layanan/IMG-3.png" alt="Pump installation 3"
+                    class="h-40 sm:h-48 lg:h-52 w-auto aspect-[8/5] object-cover flex-shrink-0" loading="lazy">
+                <img src="assets/images/layanan/IMG-4.png" alt="Pump installation 4"
+                    class="h-40 sm:h-48 lg:h-52 w-auto aspect-[8/5] object-cover flex-shrink-0" loading="lazy">
+                <img src="assets/images/layanan/IMG-5.png" alt="Pump installation 5"
+                    class="h-40 sm:h-48 lg:h-52 w-auto aspect-[8/5] object-cover flex-shrink-0" loading="lazy">
+
+                <!-- ===== SET 2 (duplikat untuk loop tanpa putus) ===== -->
+                <img src="assets/images/layanan/IMG-1.png" alt="" aria-hidden="true"
+                    class="h-40 sm:h-48 lg:h-52 w-auto aspect-[8/5] object-cover flex-shrink-0" loading="lazy">
+                <img src="assets/images/layanan/IMG-2.png" alt="" aria-hidden="true"
+                    class="h-40 sm:h-48 lg:h-52 w-auto aspect-[8/5] object-cover flex-shrink-0" loading="lazy">
+                <img src="assets/images/layanan/IMG-3.png" alt="" aria-hidden="true"
+                    class="h-40 sm:h-48 lg:h-52 w-auto aspect-[8/5] object-cover flex-shrink-0" loading="lazy">
+                <img src="assets/images/layanan/IMG-4.png" alt="" aria-hidden="true"
+                    class="h-40 sm:h-48 lg:h-52 w-auto aspect-[8/5] object-cover flex-shrink-0" loading="lazy">
+                <img src="assets/images/layanan/IMG-5.png" alt="" aria-hidden="true"
+                    class="h-40 sm:h-48 lg:h-52 w-auto aspect-[8/5] object-cover flex-shrink-0" loading="lazy">
             </div>
         </div>
     </section>
-    <!-- END: Why Choose Us Section -->
+    <!-- END: Services / Why Partner With Us Section -->
 
     <!-- BEGIN: Interactive Contact & Inquiry Form Section -->
-    <section id="contact" class="py-20 lg:py-28 bg-slate-50 border-t border-slate-100">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!--
+        Ganti seluruh blok dari "BEGIN: Interactive Contact & Inquiry Form Section"
+        sampai "END: Interactive Contact & Inquiry Form Section" dengan blok ini.
 
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+        - Gambar mesin: taruh file Blue_engine_1.png di assets/images/contact/
+          (atau ubah path src di bawah). Atur transparansi lewat class opacity-20.
+        - Warna background: bg-[#003865]
+    -->
+    <section id="contact" class="relative py-16 lg:py-24 bg-[#003865] overflow-hidden">
 
-                <!-- Left Side: Contact Information (4 Columns) -->
-                <div class="lg:col-span-5 flex flex-col justify-between">
-                    <div>
-                        <span class="text-xs font-extrabold text-secondary uppercase tracking-widest mb-3 block"
-                            data-translate-en="Direct Inquiry" data-translate-id="Pertanyaan Langsung">Direct
-                            Inquiry</span>
-                        <h2 class="text-3xl sm:text-4xl font-extrabold text-primary tracking-tight mb-6"
-                            data-translate-en="Engage Our Engineering Team" data-translate-id="Hubungi Tim Teknis Kami">
-                            Engage Our
-                            Engineering Team</h2>
-                        <p class="text-slate-600 text-sm mb-8 leading-relaxed"
-                            data-translate-en="Do you need structural calculations, pricing parameters, or emergency site visits? Reach out via the form, or use the direct phone lines listed below."
-                            data-translate-id="Apakah Anda membutuhkan perhitungan struktural, parameter harga, atau kunjungan lapangan darurat? Hubungi kami melalui formulir, atau gunakan saluran telepon langsung di bawah ini.">
-                            Do you need structural calculations, pricing parameters, or emergency site visits? Reach out
-                            via the form,
-                            or use the direct phone lines listed below.
-                        </p>
-                    </div>
+        <!-- Gambar mesin di latar belakang -->
+        <img src="assets/images/contact/Blue_engine_1.png" alt="" aria-hidden="true"
+            class="pointer-events-none select-none absolute -right-24 top-10 w-[75%] lg:w-[55%] max-w-[780px] opacity-10">
 
-                    <!-- Contact Cards Grid -->
-                    <div class="space-y-6">
+        <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 
-                        <!-- Address -->
-                        <div class="flex items-start gap-4">
-                            <div class="p-3 bg-white rounded border border-slate-200 text-secondary">
-                                <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                                    stroke-width="2">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                                </svg>
-                            </div>
-                            <div>
-                                <h4 class="text-xs font-bold text-slate-400 uppercase tracking-widest"
-                                    data-translate-en="Corporate Headquarters"
-                                    data-translate-id="Kantor Pusat Perusahaan">Corporate
-                                    Headquarters</h4>
-                                <p class="text-slate-800 text-sm font-bold mt-1">Gedung Intie Tehnik, Cikarang
-                                    Industrial Estate Block
-                                    B-4, Bekasi, Jawa Barat - Indonesia</p>
-                            </div>
-                        </div>
+            <h2 class="text-brand-yellow font-extrabold uppercase leading-[1.05] tracking-tight text-4xl sm:text-5xl lg:text-[56px] mb-6"
+                data-translate-en="REQUEST<br>A TECHNICAL<br>QUOTATION"
+                data-translate-id="AJUKAN<br>PENAWARAN<br>TEKNIS">
+                REQUEST<br>A TECHNICAL<br>QUOTATION
+            </h2>
 
-                        <!-- Phone -->
-                        <div class="flex items-start gap-4">
-                            <div class="p-3 bg-white rounded border border-slate-200 text-secondary">
-                                <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                                    stroke-width="2">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="M3 5a2 2 0 012-2h2.28a1 1 0 01.94.725l.548 2.2a1 1 0 00.096.867l-1.1 1.486a10.582 10.582 0 004.805 4.805l1.486-1.1a1.25 1.25 0 00.867-.096l2.2-.548A1 1 0 0121 8.28V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                                </svg>
-                            </div>
-                            <div>
-                                <h4 class="text-xs font-bold text-slate-400 uppercase tracking-widest"
-                                    data-translate-en="Direct Support & Office Line"
-                                    data-translate-id="Dukungan Langsung & Telepon Kantor">Direct Support & Office Line
-                                </h4>
-                                <p class="text-slate-800 text-sm font-bold mt-1">+62-21-897-6543 (Hotline)</p>
-                                <p class="text-slate-500 text-xs">+62-21-897-6544 (Fax)</p>
-                            </div>
-                        </div>
+            <p class="font-serif text-brand-yellow text-base lg:text-lg leading-snug max-w-4xl mb-12 lg:mb-14"
+                data-translate-en="Submit your operational specifications to receive a formal commercial and technical proposal from our Surabaya engineering department. Our team will analyze your fluid dynamic requirements to recommend the optimal equipment setup."
+                data-translate-id="Kirimkan spesifikasi operasional Anda untuk menerima proposal komersial dan teknis resmi dari departemen teknik kami di Surabaya. Tim kami akan menganalisis kebutuhan dinamika fluida Anda untuk merekomendasikan susunan peralatan yang optimal.">
+                Submit your operational specifications to receive a formal commercial and technical proposal from our
+                Surabaya engineering department. Our team will analyze your fluid dynamic requirements to recommend the
+                optimal equipment setup.
+            </p>
 
-                        <!-- Email -->
-                        <div class="flex items-start gap-4">
-                            <div class="p-3 bg-white rounded border border-slate-200 text-secondary">
-                                <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                                    stroke-width="2">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                                </svg>
-                            </div>
-                            <div>
-                                <h4 class="text-xs font-bold text-slate-400 uppercase tracking-widest"
-                                    data-translate-en="Engineering Inquiries" data-translate-id="Pertanyaan Teknik">
-                                    Engineering Inquiries
-                                </h4>
-                                <a href="mailto:engineering@intietehnik.co.id"
-                                    class="text-primary font-bold text-sm mt-1 hover:text-secondary hover:underline transition-all">engineering@intietehnik.co.id</a>
-                                <p class="text-slate-500 text-xs" data-translate-en="Response time: Under 2 hours"
-                                    data-translate-id="Waktu tanggapan: Kurang dari 2 jam">Response time: Under 2 hours
-                                </p>
-                            </div>
-                        </div>
+            <form id="inquiry-form" onsubmit="handleFormSubmit(event)"
+                class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-9">
 
-                    </div>
+                <!-- Full Name -->
+                <div>
+                    <label for="form-name" class="sr-only" data-translate-en="Full Name"
+                        data-translate-id="Nama Lengkap">Full Name</label>
+                    <input type="text" id="form-name" required
+                        class="w-full bg-transparent border-0 border-b border-brand-yellow rounded-none px-0 py-2 font-serif text-base text-brand-yellow placeholder-brand-yellow focus:ring-0 focus:border-white"
+                        data-translate-placeholder-en="Full Name" data-translate-placeholder-id="Nama Lengkap"
+                        placeholder="Full Name">
                 </div>
 
-                <!-- Right Side: Form Card (7 Columns) -->
-                <div class="lg:col-span-7">
-                    <div class="bg-white p-6 sm:p-10 rounded-xl border border-slate-100 shadow-premium">
-                        <h3 class="text-xl font-bold text-primary mb-6"
-                            data-translate-en="Technical Solution Inquiry Form"
-                            data-translate-id="Formulir Pertanyaan Solusi Teknis">Technical Solution Inquiry Form</h3>
-
-                        <form id="inquiry-form" onsubmit="handleFormSubmit(event)" class="space-y-5">
-
-                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                                <!-- Name -->
-                                <div>
-                                    <label for="form-name"
-                                        class="block text-xs font-extrabold text-slate-600 uppercase tracking-wider mb-2"
-                                        data-translate-en="Full Name" data-translate-id="Nama Lengkap">Full Name
-                                        *</label>
-                                    <input type="text" id="form-name" required
-                                        class="w-full text-sm border-slate-200 rounded-md focus:border-secondary focus:ring-secondary/20 transition-all placeholder-slate-400 font-medium py-2.5"
-                                        data-translate-placeholder-en="e.g. John Doe"
-                                        data-translate-placeholder-id="misal. Budi Santoso" placeholder="e.g. John Doe">
-                                </div>
-                                <!-- Company Name -->
-                                <div>
-                                    <label for="form-company"
-                                        class="block text-xs font-extrabold text-slate-600 uppercase tracking-wider mb-2"
-                                        data-translate-en="Company Name" data-translate-id="Nama Perusahaan">Company
-                                        Name *</label>
-                                    <input type="text" id="form-company" required
-                                        class="w-full text-sm border-slate-200 rounded-md focus:border-secondary focus:ring-secondary/20 transition-all placeholder-slate-400 font-medium py-2.5"
-                                        data-translate-placeholder-en="e.g. Pertamina"
-                                        data-translate-placeholder-id="misal. Pertamina" placeholder="e.g. Pertamina">
-                                </div>
-                            </div>
-
-                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                                <!-- Email -->
-                                <div>
-                                    <label for="form-email"
-                                        class="block text-xs font-extrabold text-slate-600 uppercase tracking-wider mb-2"
-                                        data-translate-en="Email Address" data-translate-id="Alamat Email">Email Address
-                                        *</label>
-                                    <input type="email" id="form-email" required
-                                        class="w-full text-sm border-slate-200 rounded-md focus:border-secondary focus:ring-secondary/20 transition-all placeholder-slate-400 font-medium py-2.5"
-                                        placeholder="name@company.com">
-                                </div>
-                                <!-- Phone -->
-                                <div>
-                                    <label for="form-phone"
-                                        class="block text-xs font-extrabold text-slate-600 uppercase tracking-wider mb-2"
-                                        data-translate-en="Phone Number" data-translate-id="Nomor Telepon">Phone Number
-                                        *</label>
-                                    <input type="tel" id="form-phone" required
-                                        class="w-full text-sm border-slate-200 rounded-md focus:border-secondary focus:ring-secondary/20 transition-all placeholder-slate-400 font-medium py-2.5"
-                                        data-translate-placeholder-en="e.g. +62 812-3456-789"
-                                        data-translate-placeholder-id="misal. +62 812-3456-789"
-                                        placeholder="e.g. +62 812-3456-789">
-                                </div>
-                            </div>
-
-                            <!-- Product of Interest Dropdown -->
-                            <div>
-                                <label for="form-product"
-                                    class="block text-xs font-extrabold text-slate-600 uppercase tracking-wider mb-2"
-                                    data-translate-en="Required Solution / Equipment"
-                                    data-translate-id="Solusi / Peralatan yang Dibutuhkan">Required Solution / Equipment
-                                    *</label>
-                                <select id="form-product" required
-                                    class="w-full text-sm border-slate-200 rounded-md focus:border-secondary focus:ring-secondary/20 transition-all font-medium py-2.5">
-                                    <option value="" disabled selected data-translate-en="Select an Option"
-                                        data-translate-id="Pilih Opsi">Select an Option</option>
-                                    <option value="Vertical Turbine Pumps" data-translate-en="Vertical Turbine Pumps"
-                                        data-translate-id="Pompa Turbin Vertikal">Vertical Turbine Pumps</option>
-                                    <option value="Heavy-Duty Process Pumps"
-                                        data-translate-en="Heavy-Duty Process Pumps"
-                                        data-translate-id="Pompa Proses Berat">Heavy-Duty Process Pumps</option>
-                                    <option value="Precision Rotors & Casings"
-                                        data-translate-en="Precision Rotors & Casings"
-                                        data-translate-id="Casing & Rotor Presisi">Precision Rotors & Casings</option>
-                                    <option value="Custom Fluid Handling Skids"
-                                        data-translate-en="Custom Fluid Handling Skids"
-                                        data-translate-id="Skid Penanganan Cairan Kustom">Custom Fluid Handling Skids
-                                    </option>
-                                    <option value="General Maintenance / Service"
-                                        data-translate-en="General Maintenance Support"
-                                        data-translate-id="Dukungan Pemeliharaan Umum">General Maintenance Support
-                                    </option>
-                                </select>
-                            </div>
-
-                            <!-- Message -->
-                            <div>
-                                <label for="form-message"
-                                    class="block text-xs font-extrabold text-slate-600 uppercase tracking-wider mb-2"
-                                    data-translate-en="Inquiry Details & Specifications"
-                                    data-translate-id="Detail Pertanyaan & Spesifikasi">Inquiry Details & Specifications
-                                    *</label>
-                                <textarea id="form-message" required rows="4"
-                                    class="w-full text-sm border-slate-200 rounded-md focus:border-secondary focus:ring-secondary/20 transition-all placeholder-slate-400 font-medium py-2.5"
-                                    data-translate-placeholder-en="Describe fluid viscosity, flow rates, operating pressure, temperature parameters, etc."
-                                    data-translate-placeholder-id="Jelaskan viskositas cairan, laju aliran, tekanan operasi, parameter suhu, dll."
-                                    placeholder="Describe fluid viscosity, flow rates, operating pressure, temperature parameters, etc."></textarea>
-                            </div>
-
-                            <!-- Submit Button -->
-                            <div>
-                                <button type="submit"
-                                    class="w-full bg-secondary text-primary font-extrabold uppercase tracking-wider text-xs py-4 rounded hover:bg-primary hover:text-white transition-all duration-300 shadow hover:shadow-lg focus:outline-none flex items-center justify-center gap-2">
-                                    <span data-translate-en="Send Solution Request"
-                                        data-translate-id="Kirim Permintaan Solusi">Send
-                                        Solution Request</span>
-                                    <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                                        stroke-width="2.5">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-                                    </svg>
-                                </button>
-                            </div>
-
-                        </form>
-                    </div>
+                <!-- Email -->
+                <div>
+                    <label for="form-email" class="sr-only" data-translate-en="E-mail"
+                        data-translate-id="E-mail">E-mail</label>
+                    <input type="email" id="form-email" required
+                        class="w-full bg-transparent border-0 border-b border-brand-yellow rounded-none px-0 py-2 font-serif text-base text-brand-yellow placeholder-brand-yellow focus:ring-0 focus:border-white"
+                        placeholder="E-mail">
                 </div>
 
-            </div>
+                <!-- Phone -->
+                <div>
+                    <label for="form-phone" class="sr-only" data-translate-en="Phone Number"
+                        data-translate-id="Nomor Telepon">Phone Number</label>
+                    <input type="tel" id="form-phone" required
+                        class="w-full bg-transparent border-0 border-b border-brand-yellow rounded-none px-0 py-2 font-serif text-base text-brand-yellow placeholder-brand-yellow focus:ring-0 focus:border-white"
+                        data-translate-placeholder-en="Phone Number" data-translate-placeholder-id="Nomor Telepon"
+                        placeholder="Phone Number">
+                </div>
+
+                <!-- Company Name -->
+                <div>
+                    <label for="form-company" class="sr-only" data-translate-en="Company Name"
+                        data-translate-id="Nama Perusahaan">Company Name</label>
+                    <input type="text" id="form-company" required
+                        class="w-full bg-transparent border-0 border-b border-brand-yellow rounded-none px-0 py-2 font-serif text-base text-brand-yellow placeholder-brand-yellow focus:ring-0 focus:border-white"
+                        data-translate-placeholder-en="Company Name" data-translate-placeholder-id="Nama Perusahaan"
+                        placeholder="Company Name">
+                </div>
+
+                <!-- Company Address -->
+                <div>
+                    <label for="form-address" class="sr-only" data-translate-en="Company Address"
+                        data-translate-id="Alamat Perusahaan">Company Address</label>
+                    <input type="text" id="form-address" required
+                        class="w-full bg-transparent border-0 border-b border-brand-yellow rounded-none px-0 py-2 font-serif text-base text-brand-yellow placeholder-brand-yellow focus:ring-0 focus:border-white"
+                        data-translate-placeholder-en="Company Address"
+                        data-translate-placeholder-id="Alamat Perusahaan" placeholder="Company Address">
+                </div>
+
+                <!-- Select Inquiry -->
+                <div class="relative">
+                    <label for="form-product" class="sr-only" data-translate-en="Select Inquiry"
+                        data-translate-id="Pilih Kebutuhan">Select Inquiry</label>
+                    <select id="form-product" required
+                        class="w-full appearance-none bg-none bg-transparent border-0 border-b border-brand-yellow rounded-none px-0 pr-8 py-2 font-serif text-base text-brand-yellow focus:ring-0 focus:border-white [&>option]:text-primary [&>option]:bg-white">
+                        <option value="" disabled selected data-translate-en="Select Inquiry"
+                            data-translate-id="Pilih Kebutuhan">Select Inquiry</option>
+                        <option value="Centrifugal Pumps Industries" data-translate-en="Centrifugal Pumps Industries"
+                            data-translate-id="Pompa Sentrifugal Industri">Centrifugal Pumps Industries</option>
+                        <option value="Positive Displacement Pump" data-translate-en="Positive Displacement Pump"
+                            data-translate-id="Pompa Perpindahan Positif">Positive Displacement Pump</option>
+                        <option value="Vacuum Pump & Roots Blower" data-translate-en="Vacuum Pump &amp; Roots Blower"
+                            data-translate-id="Pompa Vakum &amp; Roots Blower">Vacuum Pump &amp; Roots Blower</option>
+                        <option value="Metering & Dosing Pump" data-translate-en="Metering &amp; Dosing Pump"
+                            data-translate-id="Pompa Metering &amp; Dosing">Metering &amp; Dosing Pump</option>
+                        <option value="Specialized Chemical Pump" data-translate-en="Specialized Chemical Pump"
+                            data-translate-id="Pompa Kimia Khusus">Specialized Chemical Pump</option>
+                        <option value="Valves & Instrumentation" data-translate-en="Valves &amp; Instrumentation"
+                            data-translate-id="Katup &amp; Instrumentasi">Valves &amp; Instrumentation</option>
+                        <option value="General Inquiry / Service" data-translate-en="General Inquiry / Service"
+                            data-translate-id="Pertanyaan Umum / Servis">General Inquiry / Service</option>
+                    </select>
+                    <!-- Panah kuning -->
+                    <svg class="pointer-events-none absolute right-1 top-1/2 -translate-y-1/2 h-3 w-3 text-brand-yellow"
+                        viewBox="0 0 12 12" fill="currentColor" aria-hidden="true">
+                        <path d="M1 3h10L6 9z" />
+                    </svg>
+                </div>
+
+                <!-- Message -->
+                <div class="md:col-span-2">
+                    <label for="form-message" class="sr-only" data-translate-en="Message"
+                        data-translate-id="Pesan">Message</label>
+                    <textarea id="form-message" required rows="4"
+                        class="w-full bg-[#1b4a73] border border-brand-yellow rounded-none px-4 py-3 font-serif text-base text-brand-yellow placeholder-brand-yellow focus:ring-0 focus:border-white"
+                        data-translate-placeholder-en="Message" data-translate-placeholder-id="Pesan"
+                        placeholder="Message"></textarea>
+                </div>
+
+                <!-- Send -->
+                <div class="md:col-span-2">
+                    <button type="submit"
+                        class="bg-brand-yellow text-primary font-extrabold uppercase tracking-wide text-sm px-8 py-2.5 hover:bg-white transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-white">
+                        <span data-translate-en="Send" data-translate-id="Kirim">Send</span>
+                    </button>
+                </div>
+
+            </form>
         </div>
     </section>
     <!-- END: Interactive Contact & Inquiry Form Section -->
 
     <!-- BEGIN: Success Modal -->
     <div id="success-modal" class="fixed inset-0 z-50 overflow-y-auto hidden flex items-center justify-center p-4">
-        <!-- Modal backdrop with blur -->
         <div class="fixed inset-0 bg-primary/40 backdrop-blur-sm transition-opacity" onclick="closeModal()"></div>
 
-        <!-- Modal body -->
         <div
             class="bg-white rounded-xl shadow-2xl border border-slate-100 max-w-md w-full p-8 text-center relative z-10 transform scale-95 transition-all duration-300">
 
-            <!-- Success Icon -->
             <div
                 class="mx-auto flex items-center justify-center h-16 w-16 rounded-full bg-emerald-50 text-emerald-500 mb-6">
                 <svg class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
@@ -1115,14 +851,12 @@
                 </svg>
             </div>
 
-            <!-- Success Content -->
             <h3 class="text-2xl font-black text-primary mb-3" data-translate-en="Inquiry Submitted!"
                 data-translate-id="Pertanyaan Terkirim!">Inquiry Submitted!</h3>
             <p id="success-modal-msg" class="text-sm text-slate-500 mb-8 leading-relaxed">
                 <!-- Replaced dynamically by JS -->
             </p>
 
-            <!-- Dismiss Button -->
             <button onclick="closeModal()"
                 class="w-full bg-primary text-white font-extrabold uppercase tracking-wider text-xs py-3.5 rounded hover:bg-secondary hover:text-primary transition-colors focus:outline-none">
                 OK
@@ -1133,112 +867,137 @@
     <!-- END: Success Modal -->
 
     <!-- BEGIN: Footer -->
-    <footer class="bg-primary-dark text-slate-400 pt-16 pb-8 border-t border-slate-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+    <!--
+        Ganti seluruh blok dari "BEGIN: Footer" sampai "END: Footer" dengan blok ini.
+        Warna background: bg-brand-yellow-hover (#FFCF31). Ubah ke bg-brand-yellow (#FFC229) jika ingin sedikit lebih tua.
+    -->
+    <footer class="bg-brand-yellow-hover text-primary">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-14 lg:pt-16 pb-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8">
 
-            <!-- Column 1: Brand Info -->
-            <div class="space-y-4">
-                <div class="flex items-center gap-2">
-                    <!-- Corporate Logo Mark (Light Version for Dark Background) -->
-                    <img src="assets/images/Logo-cp.png" alt="PT Intie Tehnik"
-                        class="h-10 w-9 object-contain transition-transform duration-300 group-hover:scale-105">
-                    <span class="text-white font-extrabold text-lg tracking-tight">PT INTIE TEHNIK</span>
+                <!-- Brand -->
+                <div class="lg:col-span-5">
+                    <a href="#home" class="block mb-5 w-fit focus:outline-none">
+                        <img src="assets/images/Logo-Blue.png" alt="PT Intie Tehnik - Industrial Solutions"
+                            class="h-14 w-auto object-contain">
+                    </a>
+                    <p class="font-serif text-sm leading-snug max-w-sm"
+                        data-translate-en="Authorized supplier of heavy-duty pumping systems, vacuum units, metering pumps, and industrial control valves for critical infrastructure across Indonesia."
+                        data-translate-id="Pemasok resmi sistem pompa kelas berat, unit vakum, pompa metering, dan control valve industri untuk infrastruktur kritis di seluruh Indonesia.">
+                        Authorized supplier of heavy-duty pumping systems, vacuum units, metering pumps, and industrial
+                        control valves for critical infrastructure across Indonesia.
+                    </p>
                 </div>
-                <p class="text-xs leading-relaxed text-slate-400"
-                    data-translate-en="PT Intie Tehnik delivers heavy-duty vertical turbine pumps, precision casings, rotors, and fully customized fluid handling systems engineered to reduce operational risks."
-                    data-translate-id="PT Intie Tehnik menyediakan pompa turbin vertikal kelas berat, casing presisi, rotor, dan sistem penanganan cairan kustom yang dirancang untuk mengurangi risiko operasional.">
-                    PT Intie Tehnik delivers heavy-duty vertical turbine pumps, precision casings, rotors, and fully
-                    customized
-                    fluid handling systems engineered to reduce operational risks.
-                </p>
+
+                <!-- Catalog -->
+                <div class="lg:col-span-4">
+                    <h4 class="text-2xl font-medium uppercase tracking-wide mb-5" data-translate-en="Catalog"
+                        data-translate-id="Katalog">Catalog</h4>
+                    <ul class="space-y-2.5 font-serif text-base">
+                        <li>
+                            <a href="#products" class="flex items-center gap-3 hover:underline underline-offset-4">
+                                <svg class="h-4 w-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                                    stroke-width="2.5">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                                </svg>
+                                <span data-translate-en="Centrifugal Pumps"
+                                    data-translate-id="Pompa Sentrifugal">Centrifugal Pumps</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#products" class="flex items-center gap-3 hover:underline underline-offset-4">
+                                <svg class="h-4 w-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                                    stroke-width="2.5">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                                </svg>
+                                <span data-translate-en="Positive Displacement Pumps"
+                                    data-translate-id="Pompa Perpindahan Positif">Positive Displacement Pumps</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#products" class="flex items-center gap-3 hover:underline underline-offset-4">
+                                <svg class="h-4 w-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                                    stroke-width="2.5">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                                </svg>
+                                <span data-translate-en="Liquid Ring Vacuum"
+                                    data-translate-id="Vakum Liquid Ring">Liquid Ring Vacuum</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#products" class="flex items-center gap-3 hover:underline underline-offset-4">
+                                <svg class="h-4 w-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                                    stroke-width="2.5">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                                </svg>
+                                <span data-translate-en="API 675 Metering &amp; Dosing Systems"
+                                    data-translate-id="Sistem Metering &amp; Dosing API 675">API 675 Metering &amp;
+                                    Dosing Systems</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#products" class="flex items-center gap-3 hover:underline underline-offset-4">
+                                <svg class="h-4 w-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                                    stroke-width="2.5">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                                </svg>
+                                <span data-translate-en="Control Valves &amp; Flow Instrumentation"
+                                    data-translate-id="Control Valve &amp; Instrumentasi Aliran">Control Valves &amp;
+                                    Flow Instrumentation</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Contact -->
+                <div class="lg:col-span-3">
+                    <h4 class="text-2xl font-medium uppercase tracking-wide mb-5" data-translate-en="Contact Us"
+                        data-translate-id="Hubungi Kami">Contact Us</h4>
+                    <ul class="space-y-3 font-serif text-base">
+                        <li class="flex items-center gap-4">
+                            <svg class="h-5 w-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                                stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M3 5a2 2 0 012-2h2.28a1 1 0 01.94.725l.548 2.2a1 1 0 01-.27.95l-1.1 1.1a11 11 0 005.4 5.4l1.1-1.1a1 1 0 01.95-.27l2.2.548a1 1 0 01.725.94V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                            </svg>
+                            <a href="tel:+62818303147" class="hover:underline underline-offset-4">+62 81 830 3147</a>
+                        </li>
+                        <li class="flex items-center gap-4">
+                            <svg class="h-5 w-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                                stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                            </svg>
+                            <a href="mailto:intie.pump@gmail.com"
+                                class="hover:underline underline-offset-4">intie.pump@gmail.com</a>
+                        </li>
+                        <li class="flex items-center gap-4">
+                            <svg class="h-5 w-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                                stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                            <address class="not-italic leading-snug">
+                                Gedung REVIO<br>
+                                Jl. Kaliwaron No. 58<br>
+                                Gubeng, Surabaya 60285<br>
+                                East Java, Indonesia
+                            </address>
+                        </li>
+                    </ul>
+                </div>
+
             </div>
 
-            <!-- Column 2: Quick Links -->
-            <div class="space-y-4">
-                <h4 class="text-white font-extrabold text-sm uppercase tracking-wider"
-                    data-translate-en="Quick Navigation" data-translate-id="Navigasi Cepat">Quick Navigation</h4>
-                <ul class="space-y-2.5 text-xs">
-                    <li><a href="#home" class="hover:text-secondary transition-colors" data-translate-en="Home"
-                            data-translate-id="Beranda">Home</a></li>
-                    <li><a href="#products" class="hover:text-secondary transition-colors"
-                            data-translate-en="Products Catalog" data-translate-id="Katalog Produk">Products Catalog</a>
-                    </li>
-                    <li><a href="#services" class="hover:text-secondary transition-colors"
-                            data-translate-en="Engineering Services" data-translate-id="Layanan Rekayasa">Engineering
-                            Services</a>
-                    </li>
-                    <li><a href="#why-choose-us" class="hover:text-secondary transition-colors"
-                            data-translate-en="About Us" data-translate-id="Tentang Kami">About Us</a></li>
-                    <li><a href="#contact" class="hover:text-secondary transition-colors"
-                            data-translate-en="Submit Inquiry" data-translate-id="Kirim Pertanyaan">Submit Inquiry</a>
-                    </li>
-                </ul>
-            </div>
-
-            <!-- Column 3: Industrial Products -->
-            <div class="space-y-4">
-                <h4 class="text-white font-extrabold text-sm uppercase tracking-wider" data-translate-en="Solutions"
-                    data-translate-id="Solusi">Solutions</h4>
-                <ul class="space-y-2.5 text-xs">
-                    <li><a href="#products" class="hover:text-secondary transition-colors"
-                            data-translate-en="Vertical Turbine Systems"
-                            data-translate-id="Sistem Turbin Vertikal">Vertical Turbine
-                            Systems</a></li>
-                    <li><a href="#products" class="hover:text-secondary transition-colors"
-                            data-translate-en="API Process Pumps" data-translate-id="Pompa Proses API">API Process
-                            Pumps</a></li>
-                    <li><a href="#products" class="hover:text-secondary transition-colors"
-                            data-translate-en="Custom Skid Packaging" data-translate-id="Paket Skid Kustom">Custom Skid
-                            Packaging</a>
-                    </li>
-                    <li><a href="#products" class="hover:text-secondary transition-colors"
-                            data-translate-en="Hydraulic Rotors & Impellers"
-                            data-translate-id="Rotor & Impeller Hidrolik">Hydraulic
-                            Rotors & Impellers</a></li>
-                </ul>
-            </div>
-
-            <!-- Column 4: Support & Details -->
-            <div class="space-y-4">
-                <h4 class="text-white font-extrabold text-sm uppercase tracking-wider"
-                    data-translate-en="Operating Hours" data-translate-id="Jam Operasional">Operating Hours</h4>
-                <ul class="space-y-2.5 text-xs">
-                    <li>
-                        <span class="block text-white font-semibold" data-translate-en="Mon - Fri Office"
-                            data-translate-id="Kantor Senin - Jumat">Mon - Fri Office</span>
-                        <span class="text-slate-500">08:00 - 17:00 (GMT+7)</span>
-                    </li>
-                    <li>
-                        <span class="block text-white font-semibold" data-translate-en="Field Response Team"
-                            data-translate-id="Tim Respon Lapangan">Field Response Team</span>
-                        <span class="text-secondary font-bold" data-translate-en="24/7 Hotline Support"
-                            data-translate-id="Dukungan Hotline 24/7">24/7 Hotline Support</span>
-                    </li>
-                </ul>
-            </div>
-
-        </div>
-
-        <!-- Bottom Copyright -->
-        <div
-            class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 border-t border-slate-800/60 flex flex-col sm:flex-row items-center justify-between text-xs gap-4">
-            <div class="text-slate-500">
-                &copy; 2026 PT Intie Tehnik. All rights reserved. | <span
-                    data-translate-en="ISO 9001:2015 Certified Manufacturing Facility"
-                    data-translate-id="Fasilitas Manufaktur Bersertifikat ISO 9001:2015">ISO 9001:2015 Certified
-                    Manufacturing
-                    Facility</span>
-            </div>
-
-            <!-- Footer language selector -->
-            <div class="flex gap-4">
-                <button onclick="setLanguage('en')" class="hover:text-white transition-colors">English (EN)</button>
-                <span class="text-slate-700">|</span>
-                <button onclick="setLanguage('id')" class="hover:text-white transition-colors">Bahasa Indonesia
-                    (ID)</button>
+            <!-- Copyright (hapus blok ini jika tidak diperlukan) -->
+            <div class="mt-12 pt-6 border-t border-primary/20 text-xs text-primary/70">
+                &copy; 2026 PT Intie Tehnik. All rights reserved.
             </div>
         </div>
     </footer>
+    <!-- END: Footer -->
 
     <!-- JavaScript logic -->
     <script>
@@ -1260,17 +1019,14 @@
         function setLanguage(lang) {
             currentLang = lang;
 
-            // Update elements having translation data
             document.querySelectorAll('[data-translate-en]').forEach(el => {
                 el.innerHTML = lang === 'en' ? el.getAttribute('data-translate-en') : el.getAttribute('data-translate-id');
             });
 
-            // Update placeholder translation attributes
             document.querySelectorAll('[data-translate-placeholder-en]').forEach(el => {
                 el.setAttribute('placeholder', lang === 'en' ? el.getAttribute('data-translate-placeholder-en') : el.getAttribute('data-translate-placeholder-id'));
             });
 
-            // Desktop Button Styling State
             const btnEn = document.getElementById('lang-en');
             const btnId = document.getElementById('lang-id');
             if (lang === 'en') {
@@ -1285,7 +1041,6 @@
                 btnEn.classList.add('text-primary');
             }
 
-            // Mobile Button Styling State
             const btnEnMob = document.getElementById('lang-en-mob');
             const btnIdMob = document.getElementById('lang-id-mob');
             if (lang === 'en') {
@@ -1303,7 +1058,6 @@
             localStorage.setItem('preferred-lang', lang);
         }
 
-        // Set default language on load
         document.addEventListener('DOMContentLoaded', () => {
             setLanguage(currentLang);
         });
@@ -1313,7 +1067,6 @@
             const selectElement = document.getElementById('form-product');
             selectElement.value = productName;
 
-            // Scroll smoothly to contact section
             const contactSection = document.getElementById('contact');
             contactSection.scrollIntoView({ behavior: 'smooth' });
         }
@@ -1333,10 +1086,8 @@
                 msgParagraph.textContent = `Terima kasih, ${name}! Permintaan Anda untuk spesifikasi "${product}" telah dicatat. Salah satu teknisi lapangan kami akan menghubungi Anda segera.`;
             }
 
-            // Display the modal
             modal.classList.remove('hidden');
 
-            // Reset form
             document.getElementById('inquiry-form').reset();
         }
 
@@ -1351,7 +1102,6 @@
 
         function highlightNavOnScroll() {
             let scrollPos = window.scrollY || document.documentElement.scrollTop;
-            // Offset to trigger highlight a bit early (before section hits very top)
             scrollPos += 150;
 
             sections.forEach(section => {
@@ -1401,7 +1151,6 @@
             let current = 0;
             let timer = null;
 
-            // Build dot indicators
             slides.forEach((_, i) => {
                 const dot = document.createElement('button');
                 dot.type = 'button';
@@ -1457,7 +1206,6 @@
                 startAutoplay();
             }
 
-            // Pause when the hero is hovered, resume on mouse leave
             heroMain.addEventListener('mouseenter', stopAutoplay);
             heroMain.addEventListener('mouseleave', startAutoplay);
 
